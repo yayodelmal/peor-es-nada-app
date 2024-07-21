@@ -1,0 +1,7 @@
+{
+  "name": "peor-es-nada-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

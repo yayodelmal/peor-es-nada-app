@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Publicación</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="publicacionForm" (ngSubmit)="crearPublicacion()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input formControlName="titulo"></ion-input>
+    </ion-item>
+    <div *ngIf="publicacionForm.get('titulo')?.invalid && publicacionForm.get('titulo')?.touched">
+      <ion-text color="danger">
+        <p *ngIf="publicacionForm.get('titulo')?.errors?.['required']">El título es obligatorio.</p>
+        <p *ngIf="publicacionForm.get('titulo')?.errors?.['minlength']">El título debe tener al menos 5 caracteres.</p>
+      </ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion"></ion-textarea>
+    </ion-item>
+    <div *ngIf="publicacionForm.get('descripcion')?.invalid && publicacionForm.get('descripcion')?.touched">
+      <ion-text color="danger">
+        <p *ngIf="publicacionForm.get('descripcion')?.errors?.['required']">La descripción es obligatoria.</p>
+        <p *ngIf="publicacionForm.get('descripcion')?.errors?.['minlength']">La descripción debe tener al menos 20 caracteres.</p>
+      </ion-text>
+    </div>
+
+    <ion-item>
+      <ion-button (click)="capturarFotografia()">
+        <ion-icon slot="start" name="camera-outline"></ion-icon>
+        Capturar Fotografía
+      </ion-button>
+    </ion-item>
+    <div *ngIf="!fotoTomada && publicacionForm.dirty">
+      <ion-text color="danger">
+        <p>La fotografía es obligatoria.</p>
+      </ion-text>
+    </div>
+
+    <div *ngIf="fotografia">
+      <img [src]="fotografia" alt="Fotografía de la Publicación" />
+    </div>
+
+    <ion-button expand="full" type="submit" [disabled]="publicacionForm.invalid || !fotoTomada">Crear Publicación</ion-button>
+  </form>
+</ion-content>

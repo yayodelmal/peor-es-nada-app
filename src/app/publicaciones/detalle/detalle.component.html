@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de Publicación</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img [src]="publicacion.fotografia"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ publicacion.titulo }}</ion-card-title>
+      <ion-card-subtitle>{{ publicacion.fecha | dateFormat }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ publicacion.descripcion }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

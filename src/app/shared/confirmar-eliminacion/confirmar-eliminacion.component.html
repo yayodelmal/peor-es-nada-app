@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmar Eliminación</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Eliminar Publicación</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>¿Estás seguro de que quieres eliminar esta publicación?</p>
+      <ion-button expand="full" color="danger" (click)="confirmarEliminacion()">Eliminar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
